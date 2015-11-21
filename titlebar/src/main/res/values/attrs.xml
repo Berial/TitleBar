@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBar">
+        <attr name="tbTitleSize" format="dimension"/>
+        <attr name="tbSubTextSize" format="dimension"/>
+        <attr name="tbLeftText" format="string|reference"/>
+        <attr name="tbRightText" format="string|reference"/>
+        <attr name="tbLeftIcon" format="reference"/>
+        <attr name="tbRightIcon" format="reference"/>
+        <attr name="tbTitle" format="string|reference"/>
+        <attr name="tbIconPadding" format="dimension"/>
+        <attr name="tbTextColor" format="color|integer"/>
+    </declare-styleable>
+</resources>
