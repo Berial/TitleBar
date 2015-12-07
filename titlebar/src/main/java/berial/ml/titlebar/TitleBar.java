@@ -123,6 +123,8 @@ public class TitleBar extends View {
             mLeftIcon.setBounds(leftPadding, getHeight() / 2 - h / 2, leftIconWidth + leftPadding,
                     getHeight() / 2 + h / 2);
             mLeftIcon.draw(canvas);
+
+            mLeftClickableArea = leftPadding + mIconPadding + leftIconWidth;
         }
 
         if (mRightIconRes != 0) {
@@ -136,6 +138,8 @@ public class TitleBar extends View {
             mRightIcon.setBounds(getWidth() - rightIconWidth - rightPadding, getHeight() / 2 - h / 2,
                     getWidth() - rightPadding, getHeight() / 2 + h / 2);
             mRightIcon.draw(canvas);
+
+            mRightClickableArea = rightPadding + mIconPadding + rightIconWidth;
         }
 
         if (!TextUtils.isEmpty(mLeftText) && !mHideLeftText) {
@@ -151,6 +155,8 @@ public class TitleBar extends View {
             float baseline = (getHeight() - fm.ascent - fm.descent) / 2;
 
             canvas.drawText(mLeftText, left, baseline, mPaint);
+        } else {
+            mLeftClickableArea += 30; // 增加30px的可触发面积
         }
 
         if (!TextUtils.isEmpty(mRightText) && !mHideRightText) {
@@ -166,6 +172,8 @@ public class TitleBar extends View {
             float baseline = (getHeight() - fm.ascent - fm.descent) / 2;
 
             canvas.drawText(mRightText, getWidth() - right, baseline, mPaint);
+        } else {
+            mRightClickableArea += 30; // 增加30px的可触发面积
         }
 
         if (!TextUtils.isEmpty(mTitleText)) {
@@ -237,6 +245,7 @@ public class TitleBar extends View {
 
     /**
      * 设置左侧图标资源
+     *
      * @param leftIconRes 图标资源id
      */
     public void setLeftIcon(@DrawableRes int leftIconRes) {
@@ -251,6 +260,7 @@ public class TitleBar extends View {
 
     /**
      * 设置两侧的文字大小
+     *
      * @param size 文字大小
      */
     public void setSubTextSize(float size) {
@@ -278,7 +288,7 @@ public class TitleBar extends View {
         invalidate();
     }
 
-    public void hideLeft(boolean hidden){
+    public void hideLeft(boolean hidden) {
         mHideLeftText = mHideLeftIcon = hidden;
         invalidate();
     }

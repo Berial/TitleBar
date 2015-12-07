@@ -17,7 +17,6 @@
         android:paddingRight="8dp"
         app:tbLeftIcon="@mipmap/icon_arrow_left"
         app:tbRightIcon="@mipmap/icon_edit"
-        app:tbLeftText="返回"
         app:tbTitle="标题"
         app:tbRightText="编辑"/>
 </LinearLayout>

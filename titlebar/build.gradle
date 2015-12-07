@@ -1,29 +1,5 @@
 apply plugin: 'com.android.library'
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'TitleBar'
-
-    publishedGroupId = 'ml.berial'
-    libraryName = 'TitleBar'
-    artifact = 'lib'
-
-    libraryDescription = 'An Android library that brings the Material Design 5.1 sidebar to pre-5.1 devices.'
-
-    siteUrl = 'https://github.com/berial/TitleBarSample'
-    gitUrl = 'https://github.com/berial/TitleBarSample.git'
-
-    libraryVersion = '1.0.0'
-
-    developerId = 'berial'
-    developerName = 'berial'
-    developerEmail = '715434384@qq.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -42,13 +18,19 @@ android {
     }
 }
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.1.1"
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
 }
 
-def siteUrl = 'https://github.com/berial/TitleBarSample'      // 项目的主页
-def gitUrl = 'https://github.com/berial/TitleBarSample.git'   // Git仓库的url
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+apply from: 'https://raw.githubusercontent.com/msdx/gradle-publish/master/bintray.gradle'
